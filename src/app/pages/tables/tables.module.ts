@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { HttpClientModule } from "@angular/common/http";
 import { ProgressbarModule } from "ngx-bootstrap/progressbar";
 import { BsDropdownModule } from "ngx-bootstrap/dropdown";
 import { PaginationModule } from "ngx-bootstrap/pagination";
@@ -18,6 +19,7 @@ import { TablesRoutes } from "./tables.routing";
   declarations: [NgxDatatablesComponent, SortableComponent, TablesComponent],
   imports: [
     CommonModule,
+    HttpClientModule,
     RouterModule.forChild(TablesRoutes),
     NgxDatatableModule,
     ProgressbarModule.forRoot(),
