@@ -16,8 +16,6 @@ export class TablesComponent implements OnInit {
     this.pokemonService.getData().subscribe(data => { });
 
     this.pokemonService.getPokemonList()
-      .subscribe(pokemonList => this.pokemonList = pokemonList);
-    
-    console.log("test",this.pokemonList);
+      .subscribe(pokemonList => this.pokemonList= pokemonList["results"]);
   }
 }
