@@ -1,34 +1,21 @@
 import { Component, OnInit } from "@angular/core";
+import { CatFactService } from '../cat-fact.service';
+import { CatFact } from "../catfact";
 
 @Component({
   selector: "app-validation",
   templateUrl: "validation.component.html"
 })
 export class ValidationComponent implements OnInit {
-  constructor() {}
+  catFacts: CatFact[];
 
-  ngOnInit() {
-    window.addEventListener(
-      "load",
-      function() {
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        var forms = document.getElementsByClassName("needs-validation");
-        // Loop over them and prevent submission
-        var validation = Array.prototype.filter.call(forms, function(form) {
-          form.addEventListener(
-            "submit",
-            function(event) {
-              if (form.checkValidity() === false) {
-                event.preventDefault();
-                event.stopPropagation();
-              }
-              form.classList.add("was-validated");
-            },
-            false
-          );
-        });
-      },
-      false
-    );
+  constructor(private catfactService: CatFactService) {}
+
+  ngOnInit(): void {
+
+    this.catfactService.getData().subscribe(data => { });
+
+    this.catfactService.getCatFact()
+      .subscribe(catFacts => this.catFacts = catFacts);
   }
-}
+};
