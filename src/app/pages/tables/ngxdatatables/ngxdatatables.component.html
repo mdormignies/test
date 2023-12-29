@@ -25,17 +25,120 @@
           </nav>
         </div>
 
-        <div class=" col-lg-6 col-5 text-right">
-          <a class=" btn btn-sm btn-neutral" href="javascript:void(0)"> New </a>
-
-          <a class=" btn btn-sm btn-neutral" href="javascript:void(0)">
-            Filters
-          </a>
-        </div>
+        <div class="col-md-4">
+          <button class="btn btn-block btn-default" (click)="open()">
+            Ajouter un Pokemon
+          </button> <!-- Debut fenetre modal -->
+          <ng-template #addPokemonModal let-c="close" let-d="dismiss">
+            <div class="modal-content">
+              <div class="modal-body p-0">
+                <div class="card bg-secondary shadow border-0">
+                  <div class="card-body px-lg-5 py-lg-5">
+                    <div class="text-center text-muted mb-4">
+                      <small>Veuillez fournir les informations du nouveau Pokemon</small>
+                    </div>
+                    <form role="form">
+                      <div class="form-group mb-3">
+                        <div class="input-group input-group-alternative">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="ni ni-bullet-list-67"></i></span>
+                          </div>
+                          <input class="form-control" placeholder="ID (entier)" type="number" [(ngModel)]="newPokemon.id">
+                        </div>
+                      </div>
+                      <div class="form-group mb-3">
+                        <div class="input-group input-group-alternative">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="ni ni-user-run"></i></span>
+                          </div>
+                          <input class="form-control" placeholder="Nom (max. 30 caractères)" type="text" maxlength="30" [(ngModel)]="newPokemon.name">
+                        </div>
+                      </div>
+                      <div class="form-group mb-3">
+                        <div class="input-group input-group-alternative">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="ni ni-chart-bar-32"></i></span>
+                          </div>
+                          <input class="form-control" placeholder="HP (0 à 50)" type="number" min="0" max="50" [(ngModel)]="newPokemon.hp">
+                        </div>
+                      </div>
+                      <div class="form-group mb-3">
+                        <div class="input-group input-group-alternative">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="ni ni-chart-pie-35"></i></span>
+                          </div>
+                          <input class="form-control" placeholder="CP (0 à 10)" type="number" min="0" max="10" [(ngModel)]="newPokemon.cp">
+                        </div>
+                      </div>
+                      <div class="form-group mb-3">
+                        <div class="input-group input-group-alternative">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="ni ni-image"></i></span>
+                          </div>
+                          <input class="form-control" placeholder="Image (lien)" type="url" [(ngModel)]="newPokemon.picture">
+                        </div>
+                      </div>
+                      <div class="form-group mb-3">
+                        <label for="pokemonTypes">Types :</label>
+                        <div class="custom-control custom-checkbox">
+                          <input class="custom-control-input" id="typeFeu" type="checkbox" [(ngModel)]="newPokemon.types">
+                          <label class="custom-control-label" for="typeFeu">Feu</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                          <input class="custom-control-input" id="typeEau" type="checkbox" [(ngModel)]="newPokemon.types">
+                          <label class="custom-control-label" for="typeEau">Eau</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                          <input class="custom-control-input" id="typePlante" type="checkbox" [(ngModel)]="newPokemon.types">
+                          <label class="custom-control-label" for="typePlante">Plante</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                          <input class="custom-control-input" id="typeNormal" type="checkbox" [(ngModel)]="newPokemon.types">
+                          <label class="custom-control-label" for="typeNormal">Normal</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                          <input class="custom-control-input" id="typeVol" type="checkbox" [(ngModel)]="newPokemon.types">
+                          <label class="custom-control-label" for="typeVol">Vol</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                          <input class="custom-control-input" id="typeCombat" type="checkbox" [(ngModel)]="newPokemon.types">
+                          <label class="custom-control-label" for="typeCombat">Combat</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                          <input class="custom-control-input" id="typeInsecte" type="checkbox" [(ngModel)]="newPokemon.types">
+                          <label class="custom-control-label" for="typeInsecte">Insecte</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                          <input class="custom-control-input" id="typeElectrique" type="checkbox" [(ngModel)]="newPokemon.types">
+                          <label class="custom-control-label" for="typeElectrique">Electrique</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                          <input class="custom-control-input" id="typePoison" type="checkbox" [(ngModel)]="newPokemon.types">
+                          <label class="custom-control-label" for="typePoison">Poison</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                          <input class="custom-control-input" id="typeFee" type="checkbox" [(ngModel)]="newPokemon.types">
+                          <label class="custom-control-label" for="typeFee">Fée</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                          <input class="custom-control-input" id="typePsy" type="checkbox" [(ngModel)]="newPokemon.types">
+                          <label class="custom-control-label" for="typePsy">Psy</label>
+                        </div>
+                      </div>
+                      <div class="text-center">
+                        <button type="button" class="btn btn-primary my-4" (click)="addPokemon()">Ajouter</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </div> <!-- Fin fenetre modal -->
+      </div>
       </div>
     </div>
   </div>
-</div>
 
 <div class=" container-fluid mt--6">
   <div class=" row">
@@ -52,36 +155,8 @@
         <div class="dataTables_wrapper py-4">
           <div class="row">
             <div class="col-sm-12 col-md-6">
-              <div class="dataTables_length" id="datatable_length">
-                <label>
-                  Show
-                  <select
-                    name="datatable_length"
-                    aria-controls="datatable"
-                    class="form-control form-control-sm"
-                    (change)="entriesChange($event)"
-                  >
-                    <option value="10" [selected]="entries == 10">10</option>
-                    <option value="25" [selected]="entries == 25">25</option>
-                    <option value="50" [selected]="entries == 50">50</option>
-                    <option value="-1" [selected]="entries == -1">All</option>
-                  </select>
-                  entries
-                </label>
-              </div>
             </div>
             <div class="col-sm-12 col-md-6">
-              <div id="datatable_filter" class="dataTables_filter">
-                <label>
-                  <input
-                    type="search"
-                    class="form-control form-control-sm"
-                    placeholder="Search records"
-                    aria-controls="datatable"
-                    (keyup)="filterTable($event)"
-                  />
-                </label>
-              </div>
             </div>
           </div>
 
@@ -95,83 +170,26 @@
             [rows]="temp"
             (activate)="onActivate($event)"
           >
+            <ngx-datatable-column name="Id">
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                {{ row.id }}
+              </ng-template>
+            </ngx-datatable-column>
             <ngx-datatable-column name="Name"></ngx-datatable-column>
-            <ngx-datatable-column name="Position"></ngx-datatable-column>
-            <ngx-datatable-column name="Office"></ngx-datatable-column>
-            <ngx-datatable-column name="Age"></ngx-datatable-column>
-            <ngx-datatable-column name="Start"></ngx-datatable-column>
-            <ngx-datatable-column name="Salary"></ngx-datatable-column>
+            <ngx-datatable-column name="HP"></ngx-datatable-column>
+            <ngx-datatable-column name="CP"></ngx-datatable-column>
+            <ngx-datatable-column name="Picture">
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                <img [src]="row.picture" alt="Pokemon Image" style="max-height: 50px; max-width: 50px;">
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Types">
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                <div *ngFor="let type of row.types" [ngClass]="{'type-circle': true}" [ngStyle]="getTypeColor(type)">
+                  {{ type }}
+                </div>
+              </ng-template>
+            </ngx-datatable-column>
           </ngx-datatable>
         </div>
       </div>
-      <div class="card">
-        <!-- Card header -->
-        <div class="card-header">
-          <h3 class="mb-0">Selecting Rows</h3>
-          <p class="text-sm mb-0">
-            This is an exmaple of datatable using the well known ngx-datatable
-            plugin. This is a minimal setup in order to get started fast.
-          </p>
-        </div>
-        <div class="dataTables_wrapper py-4">
-          <div class="row">
-            <div class="col-sm-12 col-md-6">
-              <div class="dataTables_length" id="datatable_length">
-                <label>
-                  Show
-                  <select
-                    name="datatable_length"
-                    aria-controls="datatable"
-                    class="form-control form-control-sm"
-                    (change)="entriesChange($event)"
-                  >
-                    <option value="10" [selected]="entries == 10">10</option>
-                    <option value="25" [selected]="entries == 25">25</option>
-                    <option value="50" [selected]="entries == 50">50</option>
-                    <option value="-1" [selected]="entries == -1">All</option>
-                  </select>
-                  entries
-                </label>
-              </div>
-            </div>
-            <div class="col-sm-12 col-md-6">
-              <div id="datatable_filter" class="dataTables_filter">
-                <label>
-                  <input
-                    type="search"
-                    class="form-control form-control-sm"
-                    placeholder="Search records"
-                    aria-controls="datatable"
-                    (keyup)="filterTable($event)"
-                  />
-                </label>
-              </div>
-            </div>
-          </div>
-
-          <ngx-datatable
-            id="print-section"
-            class="bootstrap selection-cell"
-            [columnMode]="'force'"
-            [headerHeight]="50"
-            [footerHeight]="50"
-            [rowHeight]="'auto'"
-            [limit]="entries != -1 ? entries : undefined"
-            [rows]="temp"
-            [selected]="selected"
-            [selectionType]="'multiClick'"
-            (activate)="onActivate($event)"
-            (select)="onSelect($event)"
-          >
-            <ngx-datatable-column name="Name"></ngx-datatable-column>
-            <ngx-datatable-column name="Position"></ngx-datatable-column>
-            <ngx-datatable-column name="Office"></ngx-datatable-column>
-            <ngx-datatable-column name="Age"></ngx-datatable-column>
-            <ngx-datatable-column name="Start"></ngx-datatable-column>
-            <ngx-datatable-column name="Salary"></ngx-datatable-column>
-          </ngx-datatable>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>

@@ -7,15 +7,17 @@ import { CatFact } from "../catfact";
   templateUrl: "validation.component.html"
 })
 export class ValidationComponent implements OnInit {
-  catFacts: CatFact[];
+  catFacts: any = [];
 
   constructor(private catfactService: CatFactService) {}
 
   ngOnInit(): void {
 
-    this.catfactService.getData().subscribe(data => { });
+    this.catfactService.getData().subscribe(data => {
+      console.log(JSON.stringify(data))
+     });
 
-    this.catfactService.getCatFact()
-      .subscribe(catFacts => this.catFacts = catFacts);
-  }
-};
+    this.catfactService.getData()
+      .subscribe(Data => {this.catFacts.push(Data)
+    }
+      ) }}

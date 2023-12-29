@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+.type-circle {
+    display: inline-block;
+    width: 50px; /* Ajustez la largeur du cercle selon vos besoins */
+    height: 30px; /* Ajustez la hauteur du cercle selon vos besoins */
+    border-radius: 50%;
+    text-align: center;
+    line-height: 30px; /* Ajustez la hauteur du texte selon vos besoins */
+}
